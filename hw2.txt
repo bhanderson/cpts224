@@ -1,0 +1,37 @@
+Bryce Handerson Homework 2 Cpts 224
+1.
+	touch realfile
+	ln realfile hardlink
+	ln -s realfile softlink
+	cp realfile filecopy
+2.
+before:
+	-rw-r--r--  1 bhanderson  staff  0 Sep 22 10:15 filecopy
+	-rw-r--r--  2 bhanderson  staff  0 Sep 22 10:14 hardlink
+	-rw-r--r--  2 bhanderson  staff  0 Sep 22 10:14 realfile
+	lrwxr-xr-x  1 bhanderson  staff  8 Sep 22 10:15 softlink -> realfile
+after:
+	-rw-r--r--  1 bhanderson  staff  0 Sep 22 10:15 filecopy
+	-rw-r--r--  2 bhanderson  staff  3 Sep 22 10:17 hardlink
+	-rw-r--r--  2 bhanderson  staff  3 Sep 22 10:17 realfile
+	lrwxr-xr-x  1 bhanderson  staff  8 Sep 22 10:15 softlink -> realfile
+3.
+	1550319 filecopy 1550287 hardlink 1550287 realfile 1550318 softlink
+4.
+	filecopy: empty
+	hardlink: ASCII text
+	realfile: ASCII text
+	softlink: symbolic link in a loop
+	-- the softlink is a link while the rest are treated as files with filecopy
+		being empty
+5.
+	chmod 770 hardlink
+6.
+	before it was -rw-r--r-- now it is -rwxrwx--- because there is not difference
+		when editing hardlink it is treated as realfile
+7.
+	each file is the same except filecopy which is empty
+8.
+	hardlink and realfile's size increased while softlink stayed the size of a link
+9.
+	The file was just renamed and the inode stayed the same
